@@ -1171,26 +1171,26 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 4116980: function() {
+ 4117172: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 4117035: function($0) {
+ 4117227: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 4117083: function($0) {
+ 4117275: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 4117131: function() {
+ 4117323: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 4117186: function() {
+ 4117378: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 4117247: function() {
+ 4117439: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  }
 };
@@ -2849,6 +2849,11 @@ function _JS_SystemInfo_GetPreferredDevicePixelRatio() {
 function _JS_SystemInfo_GetScreenSize(outWidth, outHeight) {
  HEAPF64[outWidth >> 3] = Module.SystemInfo.width;
  HEAPF64[outHeight >> 3] = Module.SystemInfo.height;
+}
+
+function _JS_SystemInfo_GetStreamingAssetsURL(buffer, bufferSize) {
+ if (buffer) stringToUTF8(Module.streamingAssetsUrl, buffer, bufferSize);
+ return lengthBytesUTF8(Module.streamingAssetsUrl);
 }
 
 function _JS_SystemInfo_HasAstcHdr() {
@@ -14208,6 +14213,7 @@ var asmLibraryArg = {
  "JS_SystemInfo_GetOS": _JS_SystemInfo_GetOS,
  "JS_SystemInfo_GetPreferredDevicePixelRatio": _JS_SystemInfo_GetPreferredDevicePixelRatio,
  "JS_SystemInfo_GetScreenSize": _JS_SystemInfo_GetScreenSize,
+ "JS_SystemInfo_GetStreamingAssetsURL": _JS_SystemInfo_GetStreamingAssetsURL,
  "JS_SystemInfo_HasAstcHdr": _JS_SystemInfo_HasAstcHdr,
  "JS_SystemInfo_HasCursorLock": _JS_SystemInfo_HasCursorLock,
  "JS_SystemInfo_HasFullscreen": _JS_SystemInfo_HasFullscreen,
